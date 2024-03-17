@@ -11,6 +11,9 @@ $(() => {
     let buffer = [];
     let lastKeyTime = Date.now();
 
+    let secretBuffer = ["arrowdown", "arrowdown", "arrowup", "arrowup", "arrowdown", "arrowup", "arrowup", "arrowdown", "arrowdown", "arrowup", "arrowup", "arrowdown", "arrowdown", "arrowup", "arrowup", "arrowdown", "arrowdown", "arrowup", "arrowup", "arrowdown", "arrowup", "arrowup", "arrowdown", "arrowdown", "arrowup", "arrowup", "arrowup", "arrowup", "arrowup", "arrowup", "arrowup", "arrowup", "arrowup", "arrowdown", "arrowup", "arrowup", "arrowdown", "arrowdown", "arrowdown", "arrowdown", "arrowdown", "arrowup", "arrowup", "arrowdown", "arrowup", "arrowup", "arrowdown", "arrowdown", "arrowup", "arrowup", "arrowdown", "arrowup", "arrowup", "arrowup", "arrowup", "arrowup", "arrowdown", "arrowup", "arrowup", "arrowdown", "arrowdown", "arrowdown", "arrowdown", "arrowdown", "arrowup", "arrowup",];
+
+
     if ((window.mobileAndTabletCheck)) {
 
         doc.on("keydown", (e) => {
@@ -18,59 +21,20 @@ $(() => {
             let currentTime = Date.now();
             let key = e.key.toLowerCase();
 
-            if (currentTime - lastKeyTime > 2500) {
+            if (currentTime - lastKeyTime > 10000) {
                 buffer = [];
             }
-        
+
             lastKeyTime = currentTime;
 
             buffer.push(key);
             console.log(buffer);
 
-        })
-    } else {
+            if (JSON.stringify(buffer) === JSON.stringify(secretBuffer)) {
+                alert("Que dizfwutez muto tu juewo petotito ^ W ^ Chowi pow no chew el wibwo de tapa duwa ni el pewuchito del chowito qwq quewía wewawawte awgo mejow pewo choi toto y nu me quewa winewo cachi y lo teno que ahowwaw pawa nivechanio pewo me confowmo con que chepaz que te queno mononón menototón y que cupwaz mutoz maz que enez un pwo y cada vez maz chewquita viviw jutitoz!! qwq");
+            }
 
-        let touchstartX = 0
-        let touchendX = 0
-        let touchstartY = 0
-        let touchendY = 0
-        body = $("#cuerpo")
 
-        function checkDirection() {
-            if (touchendX < touchstartX) { 
-                buffer.push("arrowleft");
-                body.append("<p>Izquierda!</p>");
-            }
-            if (touchendX > touchstartX) { 
-                buffer.push("arrowright");
-                body.append("<p>Derecha!</p>");
-            }
-            if (touchendY < touchstartY) { 
-                buffer.push("arrowup");
-                body.append("<p>Arriba!</p>");
-            }
-            if (touchendY > touchstartY) { 
-                buffer.push("arrowdown");
-                body.append("<p>Abajo!</p>");
-            }
-          }
-          
-          doc.on("touchstart", (e) => {
-            touchstartX = e.changedTouches[0].screenX
-          })
-          
-          doc.on("touchend", (e) => {
-            let currentTime = Date.now();
-
-            if (currentTime - lastKeyTime > 2500) {
-                buffer = [];
-            }
-        
-            lastKeyTime = currentTime;
-            touchendX = e.changedTouches[0].screenX
-            checkDirection()
-          })
-
+        });
     }
-}
-);
+});
